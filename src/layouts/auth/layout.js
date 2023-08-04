@@ -82,7 +82,7 @@ export const Layout = (props) => {
               Welcome to{' '}
               <Box
                 component="a"
-                sx={{ color: '#2C2A26' }}
+                sx={{ color: '#9F8965' }}
                 target="_blank"
               >
                 Hala ArtWork

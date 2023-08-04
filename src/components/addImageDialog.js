@@ -73,7 +73,7 @@ const AddImageDialog = ({ open, setOpen, onSuccess }) => {
   const [formValues, setFormValues] = useState({});
 
   const checkFormValues = useMemo(()=>{
-    return formValues.photo && formValues.title && formValues.description && formValues.size && formValues.category;
+    return formValues.photo ;
   },[formValues]); 
     
 
@@ -192,9 +192,6 @@ const AddImageDialog = ({ open, setOpen, onSuccess }) => {
               <TextField
                 variant="outlined"
                 fullWidth
-                required
-                helperText={!formValues.title ? "title is required" : ""}
-                error={!formValues.title}
                 value={formValues.title}
                 onChange={(e) => {
                   setFormValues((v) => {
@@ -233,9 +230,6 @@ const AddImageDialog = ({ open, setOpen, onSuccess }) => {
               <TextField
                 variant="outlined"
                 fullWidth
-                required
-                helperText={!formValues.size ? "size is required" : ""}
-                error={!formValues.size}
                 value={formValues.size}
                 onChange={(e) => {
                   setFormValues((v) => {
@@ -273,9 +267,6 @@ const AddImageDialog = ({ open, setOpen, onSuccess }) => {
               <TextField
                 variant="outlined"
                 fullWidth
-                required
-                helperText={!formValues.description ? "description is required" : ""}
-                error={!formValues.description}
                 value={formValues.description}
                 onChange={(e) => {
                   setFormValues((v) => {
@@ -316,8 +307,6 @@ const AddImageDialog = ({ open, setOpen, onSuccess }) => {
                 required
                 select
                 defaultValue=""
-                error={!formValues.category}
-                helperText="Please select the category of image"
                 onChange={(e) => {
                   setFormValues((v) => {
                     return{
