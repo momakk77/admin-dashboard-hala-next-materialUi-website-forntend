@@ -5,6 +5,7 @@ import UserPlusIcon from '@heroicons/react/24/solid/UserPlusIcon';
 import ListBulletIcon from '@heroicons/react/24/solid/ListBulletIcon';
 import PhotoIcon from '@heroicons/react/24/solid/PhotoIcon';
 import { SvgIcon } from '@mui/material';
+import CategoryIcon from '@heroicons/react/24/solid/PuzzlePieceIcon';
 
 export const items = [
  
@@ -24,6 +25,15 @@ export const items = [
     icon: (
       <SvgIcon fontSize="small">
         <ListBulletIcon />
+      </SvgIcon>
+    )
+  },
+  {
+    title: 'CategoryList',
+    path: '/CategoryList',
+    icon: (
+      <SvgIcon fontSize="small">
+        <CategoryIcon />
       </SvgIcon>
     )
   },

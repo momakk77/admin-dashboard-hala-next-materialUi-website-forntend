@@ -1,5 +1,5 @@
 import { Box, Stack, Grid, Typography } from "@mui/material";
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 import PropTypes, { object } from "prop-types";
@@ -10,22 +10,6 @@ import TextField from "@mui/material/TextField";
 import { SvgIcon } from '@mui/material';
 import axios from 'axios';
 import MenuItem from '@mui/material/MenuItem';
-
-const categories = [
-  {
-    value: 'Broken',
-    label: 'Broken',
-  },
-  {
-    value: 'Soul',
-    label: 'Soul',
-  },
-  {
-    value: 'Ink On Paper',
-    label: 'Ink On Paper',
-  },
-  
-];
 
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -71,6 +55,8 @@ BootstrapDialogTitle.propTypes = {
 const AddImageDialog = ({ open, setOpen, onSuccess }) => {
 
   const [formValues, setFormValues] = useState({});
+  const [getAllCategories, setGetAllCategories] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const checkFormValues = useMemo(()=>{
     return formValues.photo ;
@@ -112,6 +98,20 @@ const AddImageDialog = ({ open, setOpen, onSuccess }) => {
       console.log("error uploading");
     });
   }
+
+  useEffect(() => {
+    getCategories();
+  },[]);
+const getCategories = async ()=> {
+  try {
+    const res = await axios.get("/api/category");
+    console.log(res);
+    setGetAllCategories(res.data);
+    setLoading(true);
+  } catch (err) {
+    alert(err.message);
+  }
+}
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -317,9 +317,9 @@ const AddImageDialog = ({ open, setOpen, onSuccess }) => {
                 }}
                 value= {formValues.category}
                 >  
-                {...categories.map((option) => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.label}
+                {loading && getAllCategories?.map((getCategories) => (
+                  <MenuItem key={getCategories._id} value={getCategories.category}>
+                    {getCategories.category}
                   </MenuItem>
                 ))}
                 </TextField>

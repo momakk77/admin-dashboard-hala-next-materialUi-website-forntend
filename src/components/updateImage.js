@@ -13,21 +13,6 @@ import { useEffect, useState, useMemo } from "react";
 import axios from 'axios';
 import MenuItem from '@mui/material/MenuItem';
 
-const categories = [
-    {
-        value: 'Broken',
-        label: 'Broken',
-    },
-    {
-        value: 'Soul',
-        label: 'Soul',
-    },
-    {
-        value: 'Ink On Paper',
-        label: 'Ink On Paper',
-    },
-
-];
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     "& .MuiDialogContent-root": {
@@ -82,7 +67,7 @@ const UpdateImage = ({ open, setOpen, imageId, onSuccess }) => {
 
     const [getImage, setGetImage] = useState([]);
     const [loading, setLoading] = useState(false);
-
+    const [getAllCategories, setGetAllCategories] = useState([]);
     const [formValues, setFormValues] = useState({});
 
     const checkFormValues = useMemo(() => {
@@ -133,7 +118,18 @@ const UpdateImage = ({ open, setOpen, imageId, onSuccess }) => {
             alert(err.message);
         }
     }
+    const getCategories = async () => {
+        try {
+            const res = await axios.get("/api/category");
+            console.log(res);
+            setGetAllCategories(res.data);
+            setLoading(true);
+        } catch (err) {
+            alert(err.message);
+        }
+    }
     useEffect(() => {
+        getCategories();
         imageId && getAImage(imageId);
     }, [imageId]);
 
@@ -354,9 +350,9 @@ const UpdateImage = ({ open, setOpen, imageId, onSuccess }) => {
                                 }}
                                 value={formValues.category}
                             >
-                                {...categories.map((option) => (
-                                    <MenuItem key={option.value} value={option.value}>
-                                        {option.label}
+                                {loading && getAllCategories?.map((getCategories) => (
+                                    <MenuItem key={getCategories._id} value={getCategories.category}>
+                                        {getCategories.category}
                                     </MenuItem>
                                 ))}
                             </TextField>
