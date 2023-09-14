@@ -93,7 +93,7 @@ const AddImageDialog = ({ open, setOpen, onSuccess }) => {
     formData.append('farmed', formValues.framed);
     const config = {
       headers: {
-        'content-type': 'multipart/form-data',
+        "Content-Type": "application/json",
       },
     }
     axios.post('/api/image', formData,  config,{
