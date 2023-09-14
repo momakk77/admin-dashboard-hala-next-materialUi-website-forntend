@@ -174,8 +174,8 @@ const deleteImage = async ()=> {
                                     }}
                                 >
                                     {getImage.title},
-                                    <br /> {getImage.description} <br /> {getImage.size} <br /> 22 1/8x
-                                    29 7/8 in <br /> Framed
+                                    <br /> {getImage.description} <br /> {getImage.size} <br />
+                                    {getImage.sizeInch} <br /> {getImage.framed}
                                 </Typography>
                             </Grid>
                         </Grid>
