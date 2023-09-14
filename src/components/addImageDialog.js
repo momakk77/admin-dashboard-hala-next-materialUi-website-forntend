@@ -91,14 +91,16 @@ const AddImageDialog = ({ open, setOpen, onSuccess }) => {
     formData.append('category', formValues.category);
     formData.append('sizeInch', formValues.sizeInch);
     formData.append('farmed', formValues.framed);
-    const config = {
+    // const config = {
+    //   headers: {
+    //     'content-type': 'multipart/form-data',
+    //     
+    //   },
+    // }
+    axios.post('/api/image', formData,  {
       headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
         "Content-Type": "application/json",
-      },
-    }
-    axios.post('/api/image', formData,  config,{
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('token')
     }
     }).then((response) => {
       console.log("ssss")
