@@ -90,7 +90,7 @@ const AddImageDialog = ({ open, setOpen, onSuccess }) => {
     formData.append('size', formValues.size);
     formData.append('category', formValues.category);
     formData.append('sizeInch', formValues.sizeInch);
-    formData.append('farmed', formValues.framed);
+    formData.append('framed', formValues.framed);
     // const config = {
     //   headers: {
     //     'content-type': 'multipart/form-data',
