@@ -177,7 +177,7 @@ const getImages = async ()=> {
                             opacity: 1,
                           }}
                         >
-                          {getImages.description} <br /> {getImages.size}
+                          {getImages.description} <br /> {getImages.size} <br /> {getImages.sizeInch} <br /> {getImages.framed}
                         </Typography>
                       </CardContent>
                       <Box sx={{ flexGrow: 1 }} />

@@ -13,6 +13,22 @@ import { useEffect, useState, useMemo } from "react";
 import axios from 'axios';
 import MenuItem from '@mui/material/MenuItem';
 
+const frameds = [
+    {
+        value: '',
+        label: 'noValue',
+    },
+    {
+        value: 'Framed',
+        label: 'Framed',
+    },
+    {
+        value: 'notFramed',
+        label: 'notFramed',
+    },
+
+];
+
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     "& .MuiDialogContent-root": {
@@ -71,7 +87,7 @@ const UpdateImage = ({ open, setOpen, imageId, onSuccess }) => {
     const [formValues, setFormValues] = useState({});
 
     const checkFormValues = useMemo(() => {
-        return formValues.photo || formValues.title || formValues.description || formValues.size || formValues.category;
+        return formValues.photo || formValues.title || formValues.description || formValues.size || formValues.sizeInch || formValues.framed || formValues.category;
     }, [formValues]);
 
 
@@ -94,6 +110,8 @@ const UpdateImage = ({ open, setOpen, imageId, onSuccess }) => {
                 title: "",
                 description: "",
                 size: "",
+                sizeInch: "",
+                framed: "",
                 category: "",
             });
         }).catch((err) => {
@@ -200,8 +218,7 @@ const UpdateImage = ({ open, setOpen, imageId, onSuccess }) => {
                                     }}
                                 >
                                     {getImage.title},
-                                    <br /> {getImage.description} <br /> {getImage.size} <br /> 22 1/8x
-                                    29 7/8 in <br /> Framed
+                                    <br /> {getImage.description} <br /> {getImage.size} <br /> {getImage.sizeInch} in <br /> {getImage.framed}
                                 </Typography>
                             </Grid>
                         </Grid>
@@ -282,6 +299,42 @@ const UpdateImage = ({ open, setOpen, imageId, onSuccess }) => {
                                 }}
                             />
                         </Grid>
+                        <Grid item sm={4} xs={12}>
+                            <Typography
+                                sx={{
+                                    color: "var(--unnamed-color-afaba1)",
+                                    font: "normal normal 300 1rem Red Hat Text",
+                                    letterSpacing: 0.42,
+                                    opacity: 1,
+                                }}
+                            >
+                                new size by inch
+                            </Typography>
+                        </Grid>
+                        <Grid item sm={8} xs={12}>
+                            <TextField
+                                variant="outlined"
+                                fullWidth
+                                value={formValues.sizeInch}
+                                onChange={(e) => {
+                                    setFormValues((v) => {
+                                        return {
+                                            ...v,
+                                            sizeInch: e.target.value
+                                        }
+                                    })
+                                }}
+                                InputLabelProps={{
+                                    sx: {
+                                        color: "var(--unnamed-color-afaba1)",
+                                        border: "0.5px solid var(--unnamed-color-e2e1df)",
+                                        background:
+                                            "var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box",
+                                        borderRadius: 2,
+                                    },
+                                }}
+                            />
+                        </Grid>
                         {/* phone grid */}
                         <Grid item sm={4} xs={12}>
                             <Typography
@@ -318,6 +371,44 @@ const UpdateImage = ({ open, setOpen, imageId, onSuccess }) => {
                                     },
                                 }}
                             />
+                        </Grid>
+                        <Grid item sm={4} xs={12}>
+                            <Typography
+                                sx={{
+                                    color: "var(--unnamed-color-afaba1)",
+                                    font: "normal normal 300 1rem Red Hat Text",
+                                    letterSpacing: 0.42,
+                                    opacity: 1,
+                                }}
+                            >
+                                new framed
+                            </Typography>
+                        </Grid>
+                        <Grid item sm={8} xs={12}>
+                            <TextField
+                                variant="outlined"
+                                fullWidth
+                                required
+                                select
+                                defaultValue=""
+                                error={!formValues.framed}
+                                helperText="Please select the framed of image"
+                                onChange={(e) => {
+                                    setFormValues((v) => {
+                                        return {
+                                            ...v,
+                                            framed: e.target.value
+                                        }
+                                    })
+                                }}
+                                value={formValues.framed}
+                            >
+                                {...frameds.map((option) => (
+                                    <MenuItem key={option.value} value={option.value}>
+                                        {option.label}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
                         </Grid>
                         {/* massage grid */}
                         <Grid item sm={4} xs={12}>

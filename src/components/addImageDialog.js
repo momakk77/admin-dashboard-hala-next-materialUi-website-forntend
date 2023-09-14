@@ -11,6 +11,22 @@ import { SvgIcon } from '@mui/material';
 import axios from 'axios';
 import MenuItem from '@mui/material/MenuItem';
 
+const frameds = [
+  {
+    value: '',
+    label: 'noValue',
+  },
+  {
+    value: 'Framed',
+    label: 'Framed',
+  },
+  {
+    value: 'notFramed',
+    label: 'notFramed',
+  },
+  
+];
+
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -59,7 +75,7 @@ const AddImageDialog = ({ open, setOpen, onSuccess }) => {
   const [loading, setLoading] = useState(false);
 
   const checkFormValues = useMemo(()=>{
-    return formValues.photo ;
+    return formValues.photo && formValues.category;
   },[formValues]); 
     
 
@@ -73,6 +89,8 @@ const AddImageDialog = ({ open, setOpen, onSuccess }) => {
     formData.append('description', formValues.description);
     formData.append('size', formValues.size);
     formData.append('category', formValues.category);
+    formData.append('sizeInch', formValues.sizeInch);
+    formData.append('farmed', formValues.farmed);
     // const config = {
     //   headers: {
     //     'content-type': 'multipart/form-data',
@@ -92,6 +110,8 @@ const AddImageDialog = ({ open, setOpen, onSuccess }) => {
           description: "",
           size: "",
           category: "",
+          sizeInch: "",
+          farmed: "",
         });
     }).catch((err) => {
       console.log(err);
@@ -250,6 +270,42 @@ const getCategories = async ()=> {
                 }}
               />
             </Grid>
+             <Grid item sm={4} xs={12}>
+              <Typography
+                sx={{
+                  color: "var(--unnamed-color-afaba1)",
+                  font: "normal normal 300 1rem Red Hat Text",
+                  letterSpacing: 0.42,
+                  opacity: 1,
+                }}
+              >
+                sizeByInch *
+              </Typography>
+            </Grid>
+            <Grid item sm={8} xs={12}>
+              <TextField
+                variant="outlined"
+                fullWidth
+                value={formValues.sizeInch}
+                onChange={(e) => {
+                  setFormValues((v) => {
+                    return {
+                      ...v,
+                      sizeInch: e.target.value
+                    }
+                  })
+                }}
+                InputLabelProps={{
+                  sx: {
+                    color: "var(--unnamed-color-afaba1)",
+                    border: "0.5px solid var(--unnamed-color-e2e1df)",
+                    background:
+                      "var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box",
+                    borderRadius: 2,
+                  },
+                }}
+              />
+            </Grid>
             {/* phone grid */}
             <Grid item sm={4} xs={12}>
               <Typography
@@ -286,6 +342,45 @@ const getCategories = async ()=> {
                   },
                 }}
               />
+            </Grid>
+            <Grid item sm={4} xs={12}>
+              <Typography
+                sx={{
+                  color: "var(--unnamed-color-afaba1)",
+                  font: "normal normal 300 1rem Red Hat Text",
+                  letterSpacing: 0.42,
+                  opacity: 1,
+                }}
+              >
+                framed *
+              </Typography>
+            </Grid>
+            <Grid item sm={8} xs={12}>
+            <TextField
+                variant="outlined"
+                fullWidth
+                required
+                select
+                defaultValue=""
+                error={!formValues.framed}
+                helperText="Please select the framed of image"
+                onChange={(e) => {
+                  setFormValues((v) => {
+                    return{
+                      ...v,
+                      framed: e.target.value
+                    }
+                  })
+                }}
+                value= {formValues.framed}
+                >  
+                {...frameds.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>
+                ))}
+                </TextField>
+
             </Grid>
             {/* massage grid */}
             <Grid item sm={4} xs={12}>
