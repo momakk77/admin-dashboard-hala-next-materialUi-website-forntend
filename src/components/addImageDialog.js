@@ -90,7 +90,7 @@ const AddImageDialog = ({ open, setOpen, onSuccess }) => {
     formData.append('size', formValues.size);
     formData.append('category', formValues.category);
     formData.append('sizeInch', formValues.sizeInch);
-    formData.append('farmed', formValues.farmed);
+    formData.append('farmed', formValues.framed);
     // const config = {
     //   headers: {
     //     'content-type': 'multipart/form-data',
@@ -105,13 +105,13 @@ const AddImageDialog = ({ open, setOpen, onSuccess }) => {
       onSuccess && onSuccess()
       setOpen(false)
       setFormValues({
-          photo: "",
-          title: "",
-          description: "",
-          size: "",
-          sizeInch: "",
-          framed: "",
-          category: "",
+          photo: " ",
+          title: " ",
+          description: " ",
+          size: " ",
+          sizeInch: " ",
+          framed: " ",
+          category: " ",
         });
     }).catch((err) => {
       console.log(err);

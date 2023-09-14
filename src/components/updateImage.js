@@ -106,13 +106,13 @@ const UpdateImage = ({ open, setOpen, imageId, onSuccess }) => {
             onSuccess && onSuccess()
             setOpen(false)
             setFormValues({
-                photo: "",
-                title: "",
-                description: "",
-                size: "",
-                sizeInch: "",
-                framed: "",
-                category: "",
+                photo: " ",
+                title: " ",
+                description: " ",
+                size: " ",
+                sizeInch: " ",
+                framed: " ",
+                category: " ",
             });
         }).catch((err) => {
             console.log(err);
