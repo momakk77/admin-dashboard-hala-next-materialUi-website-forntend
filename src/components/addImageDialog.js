@@ -359,11 +359,8 @@ const getCategories = async ()=> {
             <TextField
                 variant="outlined"
                 fullWidth
-                required
                 select
                 defaultValue=""
-                error={!formValues.framed}
-                helperText="Please select the framed of image"
                 onChange={(e) => {
                   setFormValues((v) => {
                     return{
