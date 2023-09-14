@@ -91,12 +91,12 @@ const AddImageDialog = ({ open, setOpen, onSuccess }) => {
     formData.append('category', formValues.category);
     formData.append('sizeInch', formValues.sizeInch);
     formData.append('farmed', formValues.framed);
-    // const config = {
-    //   headers: {
-    //     'content-type': 'multipart/form-data',
-    //   },
-    // }
-    axios.post('/api/image', formData,  {
+    const config = {
+      headers: {
+        'content-type': 'multipart/form-data',
+      },
+    }
+    axios.post('/api/image', formData,  config,{
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token')
     }
@@ -105,13 +105,13 @@ const AddImageDialog = ({ open, setOpen, onSuccess }) => {
       onSuccess && onSuccess()
       setOpen(false)
       setFormValues({
-          photo: " ",
-          title: " ",
-          description: " ",
-          size: " ",
-          sizeInch: " ",
-          framed: " ",
-          category: " ",
+          photo: "",
+          title: "",
+          description: "",
+          size: "",
+          sizeInch: "",
+          framed: "",
+          category: "",
         });
     }).catch((err) => {
       console.log(err);
