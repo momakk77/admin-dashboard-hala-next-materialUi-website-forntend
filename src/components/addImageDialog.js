@@ -13,18 +13,18 @@ import MenuItem from '@mui/material/MenuItem';
 
 const frameds = [
   {
-    value: ' ',
-    label: 'noValue',
+      value: ' ',
+      label: 'noValue',
   },
   {
-    value: 'Framed',
-    label: 'Framed',
+      value: 'in Framed',
+      label: 'in Framed',
   },
   {
-    value: 'notFramed',
-    label: 'notFramed',
+      value: 'Without Framed',
+      label: 'Without Framed',
   },
-  
+
 ];
 
 

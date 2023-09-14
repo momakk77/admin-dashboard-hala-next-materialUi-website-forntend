@@ -19,12 +19,12 @@ const frameds = [
         label: 'noValue',
     },
     {
-        value: 'Framed',
-        label: 'Framed',
+        value: 'in Framed',
+        label: 'in Framed',
     },
     {
-        value: 'notFramed',
-        label: 'notFramed',
+        value: 'Without Framed',
+        label: 'Without Framed',
     },
 
 ];
@@ -218,7 +218,7 @@ const UpdateImage = ({ open, setOpen, imageId, onSuccess }) => {
                                     }}
                                 >
                                     {getImage.title},
-                                    <br /> {getImage.description} <br /> {getImage.size} <br /> {getImage.sizeInch} in <br /> {getImage.framed}
+                                    <br /> {getImage.description} <br /> {getImage.size} <br /> {getImage.sizeInch}  <br /> {getImage.framed}
                                 </Typography>
                             </Grid>
                         </Grid>
