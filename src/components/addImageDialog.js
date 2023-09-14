@@ -109,9 +109,9 @@ const AddImageDialog = ({ open, setOpen, onSuccess }) => {
           title: "",
           description: "",
           size: "",
-          category: "",
           sizeInch: "",
-          farmed: "",
+          framed: "",
+          category: "",
         });
     }).catch((err) => {
       console.log(err);
