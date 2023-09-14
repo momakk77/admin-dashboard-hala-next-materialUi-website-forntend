@@ -13,7 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 
 const frameds = [
   {
-    value: '',
+    value: ' ',
     label: 'noValue',
   },
   {
