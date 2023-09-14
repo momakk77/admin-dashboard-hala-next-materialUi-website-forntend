@@ -109,7 +109,7 @@ const UpdateImage = ({ open, setOpen, imageId, onSuccess }) => {
                 photo: "",
                 title: "",
                 description: "",
-                size: " ",
+                size: "",
                 sizeInch: "",
                 framed: "",
                 category: "",
