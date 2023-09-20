@@ -68,6 +68,7 @@ const AddCategoryDialog = ({ open, setOpen, onSuccess }) => {
 
     const formData = new FormData();
     formData.append('category', formValues.category);
+    formData.append('index', formValues.index);
 
     axios.post('/api/category', formData,  {
       headers: {
@@ -81,6 +82,7 @@ const AddCategoryDialog = ({ open, setOpen, onSuccess }) => {
       setOpen(false)
       setFormValues({
           category: "",
+          index: "",
         });
     }).catch((err) => {
       console.log(err);
@@ -136,7 +138,7 @@ const AddCategoryDialog = ({ open, setOpen, onSuccess }) => {
                   marginBottom: "1rem",
                 }}
               >
-                category 
+                category *
               </Typography>
             </Grid>
             <Grid item sm={8} xs={12}>
@@ -149,6 +151,43 @@ const AddCategoryDialog = ({ open, setOpen, onSuccess }) => {
                     return {
                       ...v,
                       category: e.target.value
+                    }
+                  })
+                }}
+                InputLabelProps={{
+                  sx: {
+                    color: "var(--unnamed-color-afaba1)",
+                    border: "0.5px solid var(--unnamed-color-e2e1df)",
+                    background:
+                      "var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box",
+                    borderRadius: 2,
+                  },
+                }}
+              />
+            </Grid>
+            <Grid item sm={4} xs={12}>
+              <Typography
+                sx={{
+                  color: "var(--unnamed-color-afaba1)",
+                  font: "normal normal 300 1rem Red Hat Text",
+                  letterSpacing: 0.42,
+                  opacity: 1,
+                  marginBottom: "1rem",
+                }}
+              >
+                index * 
+              </Typography>
+            </Grid>
+            <Grid item sm={8} xs={12}>
+              <TextField
+                variant="outlined"
+                fullWidth
+                value={formValues.index}
+                onChange={(e) => {
+                  setFormValues((v) => {
+                    return {
+                      ...v,
+                      index: e.target.value
                     }
                   })
                 }}
