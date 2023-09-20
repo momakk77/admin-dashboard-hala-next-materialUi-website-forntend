@@ -76,11 +76,11 @@ const getCategories = async ()=> {
   const handleClickOpenUpdateCategory = (id) => {
     // setGetAllImages();
     setSelectedCategoryId(id);
-    setOpenDeleteCategory(true);
+    setOpenUpdateCategory(true);
   };
   
   const handleCloseUpdateCategory = () => {
-    setOpenDeleteCategory(false);
+    setOpenUpdateCategory(false);
   };
   return (
     <>
