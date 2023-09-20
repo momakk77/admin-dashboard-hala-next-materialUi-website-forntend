@@ -173,7 +173,7 @@ const AddCategoryDialog = ({ open, setOpen, onSuccess }) => {
                   letterSpacing: 0.42,
                   opacity: 1,
                   marginTop: "1rem",
-                  marginButton: "1rem",
+                  marginBottom: "1rem",
                 }}
               >
                 index * 
