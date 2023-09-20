@@ -159,7 +159,8 @@ const getCategories = async ()=> {
                             opacity: 1,
                           }}
                         >
-                          {getCategories.category}
+                         Category Name: {getCategories.category} <br/>
+                         Category Order Index: {getCategories.index}
                         </Typography>
                        
                       </CardContent>

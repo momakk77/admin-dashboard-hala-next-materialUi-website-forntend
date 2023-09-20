@@ -167,7 +167,7 @@ const getImages = async ()=> {
                             opacity: 1,
                           }}
                         >
-                          {getImages.title}
+                          Title: {getImages.title}
                         </Typography>
                         <Typography
                           sx={{
@@ -177,7 +177,7 @@ const getImages = async ()=> {
                             opacity: 1,
                           }}
                         >
-                          {getImages.description} <br /> {getImages.size} <br /> {getImages.sizeInch} <br /> {getImages.framed}
+                         Description: {getImages.description} <br /> Size By CM: {getImages.size} <br /> Size By Inch: {getImages.sizeInch}<br /> Framed Status: {getImages.framed} <br /> Order Index: {getImages.index} 
                         </Typography>
                       </CardContent>
                       <Box sx={{ flexGrow: 1 }} />
