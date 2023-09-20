@@ -148,11 +148,7 @@ const getCategories = async ()=> {
                       }}
                     >
                       <CardContent>
-                          {/* <Img
-                            alt="complex"
-                            src={getImages.imagePath}
-                            sx={{ width: "100%", objectFit: "contain" }}
-                          /> */}
+                    
                         <Typography
                           sx={{
                             font: "var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) 14px/var(--unnamed-line-spacing-26) Red Hat Tex",
