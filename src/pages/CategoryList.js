@@ -14,6 +14,7 @@ import {
 } from '@mui/material';
 import { Layout as DashboardLayout } from 'src/layouts/dashboard/layout';
 import Trash from '@heroicons/react/24/solid/TrashIcon';
+import Pencil from '@heroicons/react/24/solid/PencilSquareIcon';
 import {  Card, CardContent, Divider } from '@mui/material';
 import AddCategoryDialog from '../components/addCategoryDialog';
 import DeleteCategory from '../components/deleteCategoryDialog'
