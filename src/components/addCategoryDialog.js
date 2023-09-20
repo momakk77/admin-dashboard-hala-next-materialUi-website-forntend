@@ -58,7 +58,7 @@ const AddCategoryDialog = ({ open, setOpen, onSuccess }) => {
 
 
   const checkFormValues = useMemo(()=>{
-    return formValues.category;
+    return formValues.category && formValues.index;
   },[formValues]); 
     
 
