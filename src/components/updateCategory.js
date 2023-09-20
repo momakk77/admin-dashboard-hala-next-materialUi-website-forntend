@@ -159,6 +159,43 @@ const UpdateCategory = ({ open, setOpen, categoryId, onSuccess }) => {
                                     opacity: 1,
                                 }}
                             >
+                                new category
+                            </Typography>
+                        </Grid>
+                        <Grid item sm={8} xs={12}>
+                            <TextField
+                                variant="outlined"
+                                fullWidth
+                                elevation={5}
+                                value={formValues.category}
+                                onChange={(e) => {
+                                    setFormValues((v) => {
+                                        return {
+                                            ...v,
+                                            category: e.target.value
+                                        }
+                                    })
+                                }}
+                                InputLabelProps={{
+                                    sx: {
+                                        color: "#afaba1",
+                                        border: "0.5px solid #e2e1df",
+                                        background:
+                                            "#ffffff 0% 0% no-repeat padding-box",
+                                        borderRadius: 2,
+                                    },
+                                }}
+                            />
+                        </Grid>
+                        <Grid item sm={4} xs={12}>
+                            <Typography
+                                sx={{
+                                    color: "var(--unnamed-color-afaba1)",
+                                    font: "normal normal 300 1rem Red Hat Text",
+                                    letterSpacing: 0.42,
+                                    opacity: 1,
+                                }}
+                            >
                                 new index
                             </Typography>
                         </Grid>
@@ -187,43 +224,8 @@ const UpdateCategory = ({ open, setOpen, categoryId, onSuccess }) => {
                                 }}
                             />
                         </Grid>
-                        <Grid item sm={4} xs={12}>
-                            <Typography
-                                sx={{
-                                    color: "var(--unnamed-color-afaba1)",
-                                    font: "normal normal 300 1rem Red Hat Text",
-                                    letterSpacing: 0.42,
-                                    opacity: 1,
-                                }}
-                            >
-                                new category
-                            </Typography>
-                        </Grid>
-                        <Grid item sm={8} xs={12}>
-                            <TextField
-                                variant="outlined"
-                                fullWidth
-                                required
-                                select
-                                defaultValue=""
-                                helperText="Please select the new category of image"
-                                onChange={(e) => {
-                                    setFormValues((v) => {
-                                        return {
-                                            ...v,
-                                            category: e.target.value
-                                        }
-                                    })
-                                }}
-                                value={formValues.category}
-                            >
-                                {loading && getAllCategories?.map((getCategories) => (
-                                    <MenuItem key={getCategories._id} value={getCategories.category}>
-                                        {getCategories.category}
-                                    </MenuItem>
-                                ))}
-                            </TextField>
-                        </Grid>
+                      
+                       
                         <Grid item sm={8} xs={12} marginTop={5}>
                             <Button
                                 variant="contained"
