@@ -87,7 +87,7 @@ const UpdateImage = ({ open, setOpen, imageId, onSuccess }) => {
     const [formValues, setFormValues] = useState({});
 
     const checkFormValues = useMemo(() => {
-        return formValues.photo || formValues.title || formValues.description || formValues.size || formValues.sizeInch || formValues.framed || formValues.category;
+        return formValues.photo || formValues.title || formValues.description || formValues.size || formValues.sizeInch || formValues.framed || formValues.category || formValues.index ;
     }, [formValues]);
 
 
@@ -113,6 +113,7 @@ const UpdateImage = ({ open, setOpen, imageId, onSuccess }) => {
                 sizeInch: "",
                 framed: "",
                 category: "",
+                index: "",
             });
         }).catch((err) => {
             console.log(err);
@@ -262,6 +263,43 @@ const UpdateImage = ({ open, setOpen, imageId, onSuccess }) => {
                                 }}
                             />
                         </Grid>
+                        <Grid item sm={4} xs={12}>
+                            <Typography
+                                sx={{
+                                    color: "var(--unnamed-color-afaba1)",
+                                    font: "normal normal 300 1rem Red Hat Text",
+                                    letterSpacing: 0.42,
+                                    opacity: 1,
+                                }}
+                            >
+                                new index
+                            </Typography>
+                        </Grid>
+                        <Grid item sm={8} xs={12}>
+                            <TextField
+                                variant="outlined"
+                                fullWidth
+                                elevation={5}
+                                value={formValues.index}
+                                onChange={(e) => {
+                                    setFormValues((v) => {
+                                        return {
+                                            ...v,
+                                            index: e.target.value
+                                        }
+                                    })
+                                }}
+                                InputLabelProps={{
+                                    sx: {
+                                        color: "#afaba1",
+                                        border: "0.5px solid #e2e1df",
+                                        background:
+                                            "#ffffff 0% 0% no-repeat padding-box",
+                                        borderRadius: 2,
+                                    },
+                                }}
+                            />
+                        </Grid>
 
                         <Grid item sm={4} xs={12}>
                             <Typography
@@ -299,6 +337,7 @@ const UpdateImage = ({ open, setOpen, imageId, onSuccess }) => {
                                 }}
                             />
                         </Grid>
+                        {/* size by inch grid */}
                         <Grid item sm={4} xs={12}>
                             <Typography
                                 sx={{
@@ -335,7 +374,7 @@ const UpdateImage = ({ open, setOpen, imageId, onSuccess }) => {
                                 }}
                             />
                         </Grid>
-                        {/* phone grid */}
+                        {/* description grid */}
                         <Grid item sm={4} xs={12}>
                             <Typography
                                 sx={{

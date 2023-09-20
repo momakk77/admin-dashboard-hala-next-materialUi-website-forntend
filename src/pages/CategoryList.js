@@ -31,6 +31,7 @@ const Page = () => {
 const [selectedCategoryId, setSelectedCategoryId] = useState("");
 const [OpenAddCategory, setOpenAddCategory] = React.useState(false);
 const [openDeleteCategory, setOpenDeleteCategory] = React.useState(false);
+const [openUpdateCategory, setOpenUpdateCategory] = React.useState(false);
 
 const [getAllCategories, setGetAllCategories] = useState([]);
 const [loading, setLoading] = useState(false);
@@ -67,6 +68,16 @@ const getCategories = async ()=> {
   };
   
   const handleCloseDeleteCategory = () => {
+    setOpenDeleteCategory(false);
+  };
+
+  const handleClickOpenUpdateCategory = (id) => {
+    // setGetAllImages();
+    setSelectedCategoryId(id);
+    setOpenDeleteCategory(true);
+  };
+  
+  const handleCloseUpdateCategory = () => {
     setOpenDeleteCategory(false);
   };
   return (
@@ -184,7 +195,33 @@ const getCategories = async ()=> {
                               display="inline"
                               variant="body2"
                             >
-                              DeleteImage
+                              DeleteCategory
+                            </Typography>
+                          </Stack>
+                        </Button>
+                        <Button
+                          onClick={() => {
+                            handleClickOpenUpdateCategory(getCategories._id);
+                            
+                          }}
+                        >
+                          <Stack
+                            alignItems="center"
+                            direction="row"
+                            spacing={1}
+                          >
+                            <SvgIcon
+                              color="primary"
+                              fontSize="small"
+                            >
+                              <Pencil />
+                            </SvgIcon>
+                            <Typography
+                              color="primary"
+                              display="inline"
+                              variant="body2"
+                            >
+                              UpdateCategory
                             </Typography>
                           </Stack>
                         </Button>
@@ -210,6 +247,7 @@ const getCategories = async ()=> {
       </Box>
       <AddCategoryDialog setOpen={setOpenAddCategory} open={OpenAddCategory} onSuccess={()=> getCategories()}/>
       <DeleteCategory setOpen={setOpenDeleteCategory} open={openDeleteCategory} categoryId={selectedCategoryId} onSuccess={()=> getCategories()} />
+      <UpdateCategory setOpen={setOpenUpdateCategory} open={openUpdateCategory} categoryId={selectedCategoryId} onSuccess={()=> getCategories()} />
     </>
 
   );

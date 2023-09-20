@@ -75,7 +75,7 @@ const AddImageDialog = ({ open, setOpen, onSuccess }) => {
   const [loading, setLoading] = useState(false);
 
   const checkFormValues = useMemo(()=>{
-    return formValues.photo && formValues.category;
+    return formValues.photo && formValues.category && formValues.index;
   },[formValues]); 
     
 
@@ -86,6 +86,7 @@ const AddImageDialog = ({ open, setOpen, onSuccess }) => {
     const formData = new FormData();
     formData.append('photo', formValues.photo);
     formData.append('title', formValues.title);
+    formData.append('index', formValues.index);
     formData.append('description', formValues.description);
     formData.append('size', formValues.size);
     formData.append('category', formValues.category);
@@ -113,6 +114,7 @@ const AddImageDialog = ({ open, setOpen, onSuccess }) => {
           sizeInch: "",
           framed: "",
           category: "",
+          index: "",
         });
     }).catch((err) => {
       console.log(err);
@@ -177,7 +179,7 @@ const getCategories = async ()=> {
               },
               background: "#312E81",
             }}>
-              Upload Image
+              Upload Image *
               <input
                 required
                 hidden
@@ -206,7 +208,7 @@ const getCategories = async ()=> {
                   opacity: 1,
                 }}
               >
-                title *
+                title 
               </Typography>
             </Grid>
             <Grid item sm={8} xs={12}>
@@ -234,7 +236,6 @@ const getCategories = async ()=> {
               />
             </Grid>
             {/* email grid */}
-
             <Grid item sm={4} xs={12}>
               <Typography
                 sx={{
@@ -244,7 +245,43 @@ const getCategories = async ()=> {
                   opacity: 1,
                 }}
               >
-                size *
+                index *
+              </Typography>
+            </Grid>
+            <Grid item sm={8} xs={12}>
+              <TextField
+                variant="outlined"
+                fullWidth
+                value={formValues.index}
+                onChange={(e) => {
+                  setFormValues((v) => {
+                    return {
+                      ...v,
+                      index: e.target.value
+                    }
+                  })
+                }}
+                InputLabelProps={{
+                  sx: {
+                    color: "var(--unnamed-color-afaba1)",
+                    border: "0.5px solid var(--unnamed-color-e2e1df)",
+                    background:
+                      "var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box",
+                    borderRadius: 2,
+                  },
+                }}
+              />
+            </Grid>
+            <Grid item sm={4} xs={12}>
+              <Typography
+                sx={{
+                  color: "var(--unnamed-color-afaba1)",
+                  font: "normal normal 300 1rem Red Hat Text",
+                  letterSpacing: 0.42,
+                  opacity: 1,
+                }}
+              >
+                size 
               </Typography>
             </Grid>
             <Grid item sm={8} xs={12}>
@@ -280,7 +317,7 @@ const getCategories = async ()=> {
                   opacity: 1,
                 }}
               >
-                sizeByInch *
+                sizeByInch 
               </Typography>
             </Grid>
             <Grid item sm={8} xs={12}>
@@ -317,7 +354,7 @@ const getCategories = async ()=> {
                   opacity: 1,
                 }}
               >
-                description *
+                description 
               </Typography>
             </Grid>
             <Grid item sm={8} xs={12}>
@@ -353,7 +390,7 @@ const getCategories = async ()=> {
                   opacity: 1,
                 }}
               >
-                framed *
+                framed 
               </Typography>
             </Grid>
             <Grid item sm={8} xs={12}>
