@@ -172,7 +172,8 @@ const AddCategoryDialog = ({ open, setOpen, onSuccess }) => {
                   font: "normal normal 300 1rem Red Hat Text",
                   letterSpacing: 0.42,
                   opacity: 1,
-                  marginBottom: "1rem",
+                  marginTop: "1rem",
+                  marginButton: "1rem",
                 }}
               >
                 index * 
