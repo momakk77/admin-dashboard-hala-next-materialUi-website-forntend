@@ -18,6 +18,7 @@ import Pencil from '@heroicons/react/24/solid/PencilSquareIcon';
 import {  Card, CardContent, Divider } from '@mui/material';
 import AddCategoryDialog from '../components/addCategoryDialog';
 import DeleteCategory from '../components/deleteCategoryDialog'
+import UpdateCategory from '../components/updateCategory'
 import axios from 'axios';
 
 
