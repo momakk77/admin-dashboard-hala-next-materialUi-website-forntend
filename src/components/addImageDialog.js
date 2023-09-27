@@ -70,7 +70,16 @@ BootstrapDialogTitle.propTypes = {
 
 const AddImageDialog = ({ open, setOpen, onSuccess }) => {
 
-  const [formValues, setFormValues] = useState({});
+  const [formValues, setFormValues] = useState({
+      photo: "",
+          title: "",
+          description: "",
+          size: "",
+          sizeInch: "",
+          framed: "",
+          category: "",
+          index: "",
+  });
   const [getAllCategories, setGetAllCategories] = useState([]);
   const [loading, setLoading] = useState(false);
 
